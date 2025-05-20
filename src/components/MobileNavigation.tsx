@@ -18,7 +18,7 @@ const NavItem = ({ icon, label, to, isActive = false }: NavItemProps) => {
       className={cn(
         "flex flex-col items-center justify-center p-2 transition-all",
         isActive 
-          ? "text-neon" 
+          ? "text-neon after:content-[''] after:absolute after:bottom-1 after:w-1 after:h-1 after:rounded-full after:bg-neon" 
           : "text-gray-400 hover:text-neon"
       )}
       aria-label={label}
@@ -35,8 +35,8 @@ interface MobileNavigationProps {
 
 const MobileNavigation = ({ activePath }: MobileNavigationProps) => {
   return (
-    <div className="fixed bottom-[70px] left-0 right-0 md:hidden z-10 glass border-t border-white/5">
-      <div className="flex justify-around items-center py-2">
+    <div className="fixed bottom-[70px] left-0 right-0 md:hidden z-10 backdrop-blur-lg bg-black/70 border-t border-white/5">
+      <div className="flex justify-around items-center py-3">
         <NavItem 
           icon={<Home size={20} />} 
           label="Home" 

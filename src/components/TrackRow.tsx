@@ -37,10 +37,10 @@ const TrackRow = ({
   return (
     <div 
       className={cn(
-        "group flex items-center px-4 py-2 rounded-md transition-all",
+        "group flex items-center px-4 py-3 transition-all",
         isPlaying 
-          ? "bg-white/10 text-neon" 
-          : "hover:bg-white/5",
+          ? "bg-white/10 border-l-2 border-neon" 
+          : "hover:bg-white/5 border-l-2 border-transparent",
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -48,11 +48,11 @@ const TrackRow = ({
       <div className="flex items-center justify-center w-8">
         {isHovered || isPlaying ? (
           <button 
-            className="text-neon"
+            className="text-neon hover:scale-110 transition-transform"
             onClick={onPlay}
             aria-label={isPlaying ? "Pause" : "Play"}
           >
-            {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+            {isPlaying ? <Pause size={18} /> : <Play size={18} />}
           </button>
         ) : (
           <span className="text-gray-400">{index}</span>
