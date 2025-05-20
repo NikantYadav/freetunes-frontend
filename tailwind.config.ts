@@ -53,7 +53,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        neon: "#00FFFF",
+        neon: "#009eff",
         // Black background
         dark: "#000000",
       },
@@ -73,10 +73,10 @@ export default {
         },
         "pulse-glow": {
           "0%, 100%": { 
-            boxShadow: "0 0 10px 2px rgba(0, 255, 255, 0.2)" 
+            boxShadow: "0 0 10px 2px rgba(0, 158, 255, 0.2)" 
           },
           "50%": { 
-            boxShadow: "0 0 15px 5px rgba(0, 255, 255, 0.4)" 
+            boxShadow: "0 0 15px 5px rgba(0, 158, 255, 0.4)" 
           },
         },
         "neon-underline": {
@@ -97,9 +97,9 @@ export default {
         "neon-underline": "neon-underline 0.3s ease-out forwards",
       },
       boxShadow: {
-        'neon-sm': '0 0 5px rgba(0, 255, 255, 0.5)',
-        'neon': '0 0 10px rgba(0, 255, 255, 0.7)',
-        'neon-lg': '0 0 15px rgba(0, 255, 255, 0.9)',
+        'neon-sm': '0 0 5px rgba(0, 158, 255, 0.5)',
+        'neon': '0 0 10px rgba(0, 158, 255, 0.7)',
+        'neon-lg': '0 0 15px rgba(0, 158, 255, 0.9)',
       },
       backdropBlur: {
         xs: '2px',
