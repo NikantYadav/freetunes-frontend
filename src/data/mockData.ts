@@ -34,7 +34,7 @@ export interface Playlist {
 }
 
 // Artists
-const artists: Artist[] = [
+export const artists: Artist[] = [
   {
     id: "artist-1",
     name: "Cyber Symphony",
