@@ -89,70 +89,21 @@ export default {
             opacity: "1",
           },
         },
-        "float": {
-          "0%, 100%": {
-            transform: "translateY(0)"
-          },
-          "50%": {
-            transform: "translateY(-5px)"
-          }
-        },
-        "glow-pulse": {
-          "0%, 100%": {
-            opacity: "0.8",
-            filter: "brightness(1)"
-          },
-          "50%": {
-            opacity: "1",
-            filter: "brightness(1.2)"
-          }
-        },
-        "fade-in": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(10px)"
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)"
-          }
-        },
-        "slide-in": {
-          "0%": {
-            transform: "translateX(-20px)",
-            opacity: "0"
-          },
-          "100%": {
-            transform: "translateX(0)",
-            opacity: "1"
-          }
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "neon-underline": "neon-underline 0.3s ease-out forwards",
-        "float": "float 3s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 3s ease-in-out infinite",
-        "fade-in": "fade-in 0.5s ease-out",
-        "slide-in": "slide-in 0.5s ease-out",
       },
       boxShadow: {
         'neon-sm': '0 0 5px rgba(0, 158, 255, 0.5)',
         'neon': '0 0 10px rgba(0, 158, 255, 0.7)',
         'neon-lg': '0 0 15px rgba(0, 158, 255, 0.9)',
-        'neon-xl': '0 0 25px rgba(0, 158, 255, 0.8)',
-        'inner-neon': 'inset 0 0 10px rgba(0, 158, 255, 0.6)',
       },
       backdropBlur: {
         xs: '2px',
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gradient-neon': 'linear-gradient(to right, #009eff, #00c3ff)',
-      },
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
