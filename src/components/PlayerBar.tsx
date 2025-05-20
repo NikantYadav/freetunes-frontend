@@ -1,7 +1,12 @@
 
 import React, { useState } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Volume2, Heart } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Volume2, Heart, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { 
+  Popover, 
+  PopoverContent, 
+  PopoverTrigger 
+} from '@/components/ui/popover';
 
 interface PlayerBarProps {
   track?: {
@@ -17,6 +22,15 @@ const PlayerBar = ({ track }: PlayerBarProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(30); // Current progress in percentage
   const [volume, setVolume] = useState(80); // Volume level in percentage
+  const [isLiked, setIsLiked] = useState(false);
+
+  // Mock playlists for demonstration
+  const playlists = [
+    { id: '1', name: 'Liked Songs' },
+    { id: '2', name: 'Dance Mix' },
+    { id: '3', name: 'Chill Vibes' },
+    { id: '4', name: 'Workout Playlist' }
+  ];
 
   // Mock track if none provided
   const currentTrack = track || {
@@ -36,6 +50,15 @@ const PlayerBar = ({ track }: PlayerBarProps) => {
   // Calculate current time based on percentage
   const currentTime = (currentTrack.duration * progress) / 100;
 
+  // Handle adding song to a playlist
+  const addToPlaylist = (playlistId: string) => {
+    console.log(`Added song "${currentTrack.title}" to playlist with ID: ${playlistId}`);
+    // If it's the liked songs playlist, toggle the heart icon
+    if (playlistId === '1') { 
+      setIsLiked(true);
+    }
+  };
+
   return (
     <div className="fixed bottom-0 left-0 right-0 z-20 glass border-t border-white/5 backdrop-blur-md px-4 py-3">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
@@ -50,12 +73,36 @@ const PlayerBar = ({ track }: PlayerBarProps) => {
             <p className="text-sm font-medium truncate">{currentTrack.title}</p>
             <p className="text-xs text-gray-400 truncate">{currentTrack.artist}</p>
           </div>
-          <button 
-            className="ml-2 text-gray-400 hover:text-neon"
-            aria-label="Like song"
-          >
-            <Heart size={18} />
-          </button>
+          <Popover>
+            <PopoverTrigger asChild>
+              <button 
+                className={cn(
+                  "ml-2 hover:text-neon transition-colors", 
+                  isLiked ? "text-neon" : "text-gray-400"
+                )}
+                aria-label="Like song"
+              >
+                <Heart size={18} fill={isLiked ? "#009eff" : "transparent"} />
+              </button>
+            </PopoverTrigger>
+            <PopoverContent className="w-52 glass-dark border-neon shadow-neon-sm p-2 rounded-md">
+              <div className="space-y-1">
+                <p className="text-xs text-gray-300 mb-2">Save to playlist:</p>
+                {playlists.map((playlist) => (
+                  <button
+                    key={playlist.id}
+                    className="flex items-center w-full px-2 py-1.5 text-sm rounded-sm hover:bg-neon/10 text-left transition-colors"
+                    onClick={() => addToPlaylist(playlist.id)}
+                  >
+                    {playlist.name}
+                  </button>
+                ))}
+                <button className="flex items-center w-full px-2 py-1.5 text-sm text-neon rounded-sm hover:bg-neon/10 mt-1 border-t border-white/10 pt-1.5">
+                  <Plus size={14} className="mr-1.5" /> Create Playlist
+                </button>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
 
         {/* Player controls */}
